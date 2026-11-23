@@ -1,0 +1,112 @@
+/* Cristal líquido (tema «mac-glass»): cristal oscuro tintado de azul sobre un fondo de colores vivos,
+   con borde luminoso, cápsulas y mucho desenfoque. El fondo lo pinta la aplicación, así no depende
+   del papel tapiz de cada uno. */
+html[data-theme=mac-glass] {
+  --glass-fill: linear-gradient(180deg, rgba(26,52,112,.52), rgba(10,24,62,.6));
+  --glass-fill-strong: linear-gradient(180deg, rgba(18,38,92,.5), rgba(8,18,50,.6));
+  --glass-rim: linear-gradient(140deg, rgba(255,255,255,.5), rgba(255,255,255,.1) 35%, rgba(255,255,255,.04) 62%, rgba(140,210,255,.4));
+  --glass-blur: blur(28px) saturate(170%);
+  --glass-shadow: 0 1px 0 rgba(255,255,255,.16) inset, 0 -1px 0 rgba(0,0,0,.2) inset, 0 18px 44px rgba(2,6,30,.45), 0 2px 8px rgba(2,6,30,.25);
+  --glass-hover: rgba(255,255,255,.08);
+  --glass-on: rgba(255,255,255,.14);
+  --radius-md: 12px; --radius-lg: 20px;
+  --shadow-pop: 0 28px 70px rgba(2,6,30,.6), 0 1px 0 rgba(255,255,255,.16) inset;
+}
+
+/* Fondo: cintas de luz cian, magenta, azul y violeta sobre azul noche */
+html[data-theme=mac-glass] body {
+  background:
+    radial-gradient(38% 52% at 6% 18%, rgba(0,214,255,.9), transparent 70%),
+    radial-gradient(30% 40% at 22% 8%, rgba(60,120,255,.7), transparent 70%),
+    radial-gradient(34% 46% at 14% 78%, rgba(255,40,190,.8), transparent 70%),
+    radial-gradient(28% 36% at 42% 96%, rgba(150,70,255,.75), transparent 70%),
+    radial-gradient(44% 56% at 90% 68%, rgba(30,110,255,.85), transparent 70%),
+    radial-gradient(26% 34% at 97% 40%, rgba(0,230,255,.55), transparent 70%),
+    radial-gradient(30% 30% at 70% 4%, rgba(120,60,255,.35), transparent 70%),
+    #050a24;
+}
+
+/* Láminas de cristal: relleno tintado + borde con brillo + sombra */
+html[data-theme=mac-glass] #workspace,
+html[data-theme=mac-glass] #inspector,
+html[data-theme=mac-glass] .ns-menu,
+html[data-theme=mac-glass] .hdr-menu {
+  border: 1px solid transparent !important;
+  background: var(--glass-fill) padding-box, var(--glass-rim) border-box !important;
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow) !important;
+  color: var(--text);
+}
+/* La barra lateral pone el cristal en una capa aparte: un backdrop-filter en la propia barra
+   atraparía los menús fijos que contiene (el de «Nueva sesión») y los recortaría. */
+html[data-theme=mac-glass] #sidebar {
+  margin: 10px 0 10px 10px; border-radius: 24px; height: auto; align-self: stretch;
+  position: relative; z-index: 5; border: 1px solid transparent !important; background: transparent !important; backdrop-filter: none !important; box-shadow: none !important;
+}
+html[data-theme=mac-glass] #sidebar::before {
+  content: ''; position: absolute; inset: -1px; z-index: -1; border-radius: inherit; border: 1px solid transparent;
+  background: var(--glass-fill) padding-box, var(--glass-rim) border-box; backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow);
+}
+html[data-theme=mac-glass] main { background: transparent; }
+html[data-theme=mac-glass] #workspace { margin: 4px 10px 8px; border-radius: 22px; background: var(--glass-fill-strong) padding-box, var(--glass-rim) border-box !important; overflow: hidden; }
+html[data-theme=mac-glass] #inspector { margin: 4px 10px 8px 0; border-radius: 22px; }
+html[data-theme=mac-glass] .ns-menu, html[data-theme=mac-glass] .hdr-menu { border-radius: 20px; background: var(--glass-fill-strong) padding-box, var(--glass-rim) border-box !important; }
+
+/* Cabecera sin barra: las pestañas flotan como cápsulas */
+html[data-theme=mac-glass] main > header, html[data-theme=mac-glass] #tabs { background: transparent !important; border: 0 !important; backdrop-filter: none; }
+html[data-theme=mac-glass] #tabs { gap: 6px; align-items: center; padding: 0 4px; }
+html[data-theme=mac-glass] #tabs .tab { height: 30px; border-radius: 999px; padding: 0 12px; border: 1px solid transparent; color: #c9d7f0; background: transparent; }
+html[data-theme=mac-glass] #tabs .tab:hover:not(.active) { background: var(--glass-hover); }
+html[data-theme=mac-glass] #tabs .tab.active { color: #fff; background: var(--glass-fill) padding-box, var(--glass-rim) border-box; backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); border-top-color: transparent; }
+html[data-theme=mac-glass] .hdr-icon, html[data-theme=mac-glass] main > header #console-customize { border-radius: 999px; color: #c9d7f0; }
+html[data-theme=mac-glass] .hdr-icon:hover, html[data-theme=mac-glass] .hdr-icon.on,
+html[data-theme=mac-glass] main > header #console-customize:hover { background: var(--glass-on); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.14) inset; }
+html[data-theme=mac-glass] main > header #palette-open { border-radius: 999px; background: rgba(10,24,62,.45); border-color: rgba(255,255,255,.22); color: #c9d7f0; backdrop-filter: blur(16px); }
+html[data-theme=mac-glass] .hdr-sep { background: rgba(255,255,255,.2); }
+
+/* Barra lateral: cápsulas y filas */
+html[data-theme=mac-glass] #sidebar-toggle, html[data-theme=mac-glass] #user-profile-button, html[data-theme=mac-glass] .version-history-button {
+  border-radius: 999px; background: rgba(255,255,255,.07) !important; border: 1px solid rgba(255,255,255,.16) !important; color: var(--text); box-shadow: 0 1px 0 rgba(255,255,255,.1) inset;
+}
+html[data-theme=mac-glass] .ns-new { border-radius: 999px; border: 1px solid transparent; color: #fff; background: rgba(255,255,255,.1) padding-box, var(--glass-rim) border-box; box-shadow: 0 1px 0 rgba(255,255,255,.14) inset, 0 6px 16px rgba(2,6,30,.25); }
+html[data-theme=mac-glass] .ns-new:hover, html[data-theme=mac-glass] .ns-new[aria-expanded="true"] { border-color: transparent; background: rgba(255,255,255,.16) padding-box, var(--glass-rim) border-box; }
+html[data-theme=mac-glass] .ns-search { border-radius: 999px; background: rgba(0,6,30,.28); box-shadow: inset 0 1px 3px rgba(0,0,0,.3); }
+html[data-theme=mac-glass] #open-sessions .os-filters { border-radius: 999px; background: rgba(0,6,30,.28); box-shadow: inset 0 1px 3px rgba(0,0,0,.3); }
+html[data-theme=mac-glass] #open-sessions .os-pill { border-radius: 999px; color: #c9d7f0; }
+html[data-theme=mac-glass] #open-sessions .os-pill.on { background: rgba(255,255,255,.16); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,.18) inset; }
+html[data-theme=mac-glass] #open-sessions .os-item { border-radius: 14px; }
+html[data-theme=mac-glass] #open-sessions .os-item:hover { background: var(--glass-hover); }
+html[data-theme=mac-glass] #open-sessions .os-item.active { background: rgba(0,6,30,.35); box-shadow: inset 2px 0 0 var(--accent); }
+html[data-theme=mac-glass] #open-sessions .os-badge { border-radius: 9px; background: rgba(255,255,255,.1); }
+html[data-theme=mac-glass] #fixed-tools .tool-buttons button { border-radius: 999px; color: #c9d7f0; }
+html[data-theme=mac-glass] #fixed-tools .tool-buttons button:hover, html[data-theme=mac-glass] #fixed-tools .tool-buttons button.selected { background: var(--glass-on); color: #fff; }
+html[data-theme=mac-glass] .sidebar-fixed, html[data-theme=mac-glass] #fixed-tools { border-color: rgba(255,255,255,.14) !important; }
+html[data-theme=mac-glass] .sidebar-project { background: rgba(92,200,255,.14); }
+
+/* Botones: cápsulas de cristal; el principal, cristal teñido de cian */
+html[data-theme=mac-glass] .secondary, html[data-theme=mac-glass] .skill-card { border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); color: var(--text); box-shadow: 0 1px 0 rgba(255,255,255,.1) inset; }
+html[data-theme=mac-glass] .skill-card { border-radius: 16px; }
+html[data-theme=mac-glass] .primary { border-radius: 999px; color: #04152a; border: 1px solid rgba(255,255,255,.4); background: linear-gradient(180deg, #8adcff, #3fb2f5); box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 6px 18px rgba(30,150,240,.35); }
+html[data-theme=mac-glass] #folder.primary { background: rgba(255,255,255,.06); color: var(--text); border: 1px dashed rgba(255,255,255,.25); box-shadow: none; }
+
+/* Terminal: cabecera del panel y cuota integradas */
+html[data-theme=mac-glass] .pane-head { background: transparent; border-bottom-color: rgba(255,255,255,.1); }
+html[data-theme=mac-glass] #quota-card, html[data-theme=mac-glass] footer { background: transparent !important; border-color: rgba(255,255,255,.1) !important; backdrop-filter: none; color: #c9d7f0; }
+html[data-theme=mac-glass] .terminal-pane .xterm-viewport::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); }
+
+/* Diálogos: cristal más opaco para leer bien */
+html[data-theme=mac-glass] dialog {
+  border: 1px solid transparent !important; border-radius: 24px; color: var(--text);
+  background: linear-gradient(180deg, rgba(16,32,76,.94), rgba(9,20,52,.92)) padding-box, var(--glass-rim) border-box !important;
+  backdrop-filter: blur(40px) saturate(170%); box-shadow: var(--shadow-pop);
+}
+html[data-theme=mac-glass] dialog .panel-heading { background: transparent !important; }
+html[data-theme=mac-glass] dialog::backdrop { background: rgba(2,6,30,.4); backdrop-filter: blur(6px); }
+html[data-theme=mac-glass] input, html[data-theme=mac-glass] select, html[data-theme=mac-glass] textarea { background: rgba(0,6,30,.35); border-color: rgba(255,255,255,.16); color: var(--text); }
+html[data-theme=mac-glass] .ns-search input { background: transparent; }
+
+/* Los puntos de ventana de macOS no pintan nada en Windows */
+html[data-theme=mac-glass] .mac-window-dots { display: none !important; }
+
+/* Selección legible sobre el cristal oscuro */
+html[data-theme=mac-glass] ::selection { background: rgba(92,170,255,.55); color: #fff; }

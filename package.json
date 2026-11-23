@@ -1,0 +1,43 @@
+{
+  "name": "ai-terminal-pro",
+  "version": "2.0.1",
+  "private": true,
+  "description": "MyTerminal: terminal de escritorio para Windows con Codex, Claude Code y tus shells",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "precheck": "node --check terminal-search.js && node --check workspace-enhancements.js && node --check app-updates.cjs && node --check updates-ui.js && node --check sftp-browser.cjs && node --check sftp-browser-ui.js && node --check session-tools.js",
+    "test:updates": "node --test app-updates.test.cjs",
+    "build:rdp": "node build-rdp-host.cjs",
+    "prestart": "npm run build:rdp",
+    "predist": "npm run build:rdp",
+    "start": "electron .",
+    "check": "node --check main.js && node --check preload.js && node --check renderer.js && node --check panels.js && node --check features.js && node --check project-tools.js && node --check themes.js && node --check sidebar.js && node --check usage-ui.js && node --check ai-usage.js && node --check terminal-settings.js && node --check about.js && node --check terminal-icons.js && node --check terminal-profiles.js && node --check custom-terminals.js && node --check recent-projects.cjs && node --check user-profiles.cjs && node --check user-profiles-ui.js && node --check remote-connections.cjs && node --check remote-connections-ui.js && node --check rdp-sessions.cjs && node --check rdp-ui.js && node --check build-rdp-host.cjs",
+    "test": "node --test project-tools.test.js workspace-actions.test.cjs ai-usage.test.cjs terminal-profiles.test.cjs recent-projects.test.cjs user-profiles.test.cjs remote-connections.test.cjs sftp-browser.test.cjs",
+    "dist": "electron-builder --config builder.config.cjs --win --x64",
+    "verify": "node scripts/verify.cjs",
+    "smoke": "node scripts/smoke.cjs",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/addon-search": "^0.15.0",
+    "@xterm/addon-webgl": "^0.18.0",
+    "@xterm/xterm": "^5.5.0",
+    "node-pty": "^1.1.0",
+    "qrcode": "^1.5.4",
+    "ssh2": "^1.17.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "electron": "^42.0.0",
+    "electron-builder": "^26.18.0",
+    "eslint": "^9.39.5",
+    "globals": "^17.14.0"
+  },
+  "author": {
+    "name": "samaapp",
+    "url": "https://samaapp.es"
+  },
+  "homepage": "https://samaapp.es"
+}

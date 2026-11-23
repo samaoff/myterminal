@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Terminal">
+<meta name="theme-color" content="#0f141b">
+<title>MyTerminal · segunda pantalla</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="viewer.css">
+<body>
+  <main id="welcome">
+    <p class="brand">MyTerminal</p>
+    <h1>Tu terminal,<br>aquí.</h1>
+    <p id="status" role="status">Inicia la transmisión en el PC y pulsa Conectar.</p>
+    <div id="pair">
+      <label for="pin">Código que aparece en el PC</label>
+      <input id="pin" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="123456">
+    </div>
+    <div class="actions">
+      <button id="connect" type="button">Conectar</button>
+      <button id="fullscreen" type="button" class="secondary">Pantalla completa</button>
+    </div>
+    <p class="small">Para ocultar las barras de Safari, usa Compartir → Añadir a pantalla de inicio.</p>
+  </main>
+  <video id="video" autoplay playsinline muted></video>
+  <div id="paused" hidden><p>Imagen en pausa en el PC</p></div>
+  <button id="disconnect" type="button" class="floating" hidden>Desconectar</button>
+  <script src="viewer.js"></script>
+</body>
+</html>

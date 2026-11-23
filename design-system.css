@@ -1,0 +1,36 @@
+/* Sistema de diseño: tokens comunes, iconos, foco visible y detalles de interfaz.
+   Se carga después del resto de hojas y no cambia la paleta de ningún tema. */
+:root {
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 10px;
+  --shadow-pop: 0 12px 32px rgba(0, 0, 0, .35);
+  --duration: .15s;
+  --console-font: Consolas, 'Lucida Console', monospace;
+  --diff-add: color-mix(in srgb, var(--accent) 16%, var(--bg));
+  --diff-remove: color-mix(in srgb, var(--red) 20%, var(--bg));
+}
+.ui-ic { display: inline-flex; align-items: center; justify-content: center; }
+.ic { width: 1.15em; height: 1.15em; flex: none; vertical-align: -.2em; }
+.section-icon .ic { width: 1.1em; height: 1.1em; }
+.section-chevron .ic { width: 1em; height: 1em; }
+.arrow .ic { width: .95em; height: .95em; }
+button .ui-ic + *, summary .ui-ic + * { margin-left: var(--space-1); }
+
+/* Foco visible en todo el espacio, excepto en la entrada de xterm. */
+:where(button, a, input, select, textarea, summary, [tabindex]):not(.xterm-helper-textarea):focus-visible {
+  outline: 2px solid var(--accent) !important; outline-offset: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  button, a, summary, input, select, textarea { transition: background-color var(--duration), color var(--duration), border-color var(--duration); }
+}
+
+/* Texto técnico con la fuente de consola elegida por el usuario. */
+textarea, .form-body pre, .diff-table, .change-state, #viewer-content { font-family: var(--console-font); }
+
+/* Diferencias de Git: las líneas añadidas y eliminadas se distinguen por color. */
+.diff-table .diff-add { background: var(--diff-add); }
+.diff-table .diff-remove { background: var(--diff-remove); }
+
+/* Alto contraste: los botones secundarios conservan texto legible y un borde marcado. */
+[data-theme=contrast] .secondary { background: var(--surface); border: 1px solid var(--text); }
+[data-theme=contrast] .secondary:hover { background: var(--accent-soft); }

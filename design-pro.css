@@ -1,0 +1,171 @@
+/* Aspecto Pro: tipografía técnica en etiquetas, barra lateral más densa y terminal con aire. */
+#sidebar { width: 248px; }
+#sidebar.compact { width: 68px; }
+.brand-text { font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; font-weight: 600; font-size: 14px; letter-spacing: -.01em; }
+.section-toggle, .sidebar-project h2, .fixed-tools-title, .panel-heading strong {
+  font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; font-size: 10px; font-weight: 600;
+}
+.sidebar-project h2 { color: var(--muted); }
+#current { font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace; font-size: 12px; }
+
+#folder.primary {
+  background: var(--accent-soft); color: var(--accent); font-weight: 600; border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+#folder.primary:hover { background: var(--accent); color: var(--on-accent); }
+#welcome-open.primary { border-radius: var(--radius-md); }
+
+#sidebar .launch, #sidebar .recent, #fixed-tools .tool-buttons button { border-radius: var(--radius-md); }
+#sidebar .launch:hover, #sidebar .recent:hover { background: var(--surface); color: var(--text); }
+.section-icon { color: var(--muted); }
+.section-toggle:hover .section-icon { color: var(--accent); }
+
+.terminal-pane { padding: 10px 12px 6px; }
+
+/* Cuota dentro de la barra lateral */
+#sidebar #ai-usage {
+  max-height: none; margin: 0 0 var(--space-3); padding: var(--space-3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); background: var(--surface);
+}
+#sidebar #usage-meters { flex-direction: column; gap: var(--space-3); }
+#sidebar .usage-meter { max-width: none; flex-basis: auto; }
+#sidebar .usage-heading { flex-wrap: wrap; }
+#sidebar.compact #ai-usage { display: none; }
+
+/* Visor acoplado: terminal y cambios lado a lado */
+#work-area > #viewer.docked {
+  position: static; display: none; flex-direction: column; flex: 0 0 min(46%, 700px); width: auto; max-width: none; height: auto; max-height: none;
+  margin: 0; padding: 0; border: 0; border-left: 1px solid var(--border); border-radius: 0; background: var(--panel); color: var(--text); min-width: 0;
+}
+#work-area > #viewer.docked[open] { display: flex; }
+#viewer.docked .panel-heading { flex-shrink: 0; }
+#viewer.docked #viewer-path, #viewer.docked #viewer-tools { flex-shrink: 0; }
+#viewer.docked #viewer-tools { flex-wrap: wrap; padding: var(--space-2) var(--space-4); }
+#viewer.docked #viewer-content { flex: 1; min-height: 0; overflow: auto; font-family: var(--console-font); font-size: 12px; padding: var(--space-3) var(--space-4); }
+@media (max-width: 1100px) { #work-area > #viewer.docked { flex-basis: 55%; } }
+
+/* Barra lateral agrupada: proyectos como lista, terminales, remoto y herramientas */
+:root {
+  --icon-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E");
+}
+#current::before, #sidebar .recent::before {
+  content: ''; flex: none; width: 15px; height: 15px; background: currentColor;
+  -webkit-mask: var(--icon-folder) center / contain no-repeat; mask: var(--icon-folder) center / contain no-repeat;
+}
+.sidebar-project {
+  display: flex; align-items: center; gap: var(--space-2); padding: 4px 4px 4px 10px; margin-bottom: var(--space-2);
+  background: var(--accent-soft); color: var(--accent); border-radius: var(--radius-md);
+}
+.sidebar-project h2 { display: none; }
+.sidebar-project #current { display: flex; align-items: center; gap: var(--space-2); flex: 1; min-width: 0; font-size: 12px; font-weight: 600; color: inherit; }
+.sidebar-project .project-actions { display: flex; gap: 2px; flex: none; margin: 0; }
+.sidebar-project .project-actions button { width: 26px; height: 26px; padding: 0; background: transparent; color: inherit; border-radius: var(--radius-sm); }
+.sidebar-project .project-actions button:hover { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+.recent-row { border-radius: var(--radius-md); }
+#sidebar .recent { display: flex; align-items: center; gap: var(--space-2); min-height: 32px; padding: 0 var(--space-2); font-size: 12px; color: var(--text); text-align: left; }
+#sidebar .recent::before { color: var(--muted); }
+#sidebar .recent:hover::before { color: var(--accent); }
+#sidebar .launch { min-height: 34px; padding-top: 0; padding-bottom: 0; }
+#sidebar .sidebar-group .tool-buttons { padding: 0; }
+
+/* El botón de abrir proyecto pasa a ser una fila discreta, sin bloque de color */
+#folder.primary {
+  background: transparent; color: var(--muted); font-weight: 500; box-shadow: none; border: 1px dashed var(--border);
+}
+#folder.primary:hover { background: var(--surface); color: var(--accent); border-color: var(--accent); }
+#sidebar.compact #folder.primary { border-style: solid; }
+.fixed-tools-title { padding: 9px 5px; }
+.sidebar-group .tool-buttons button { display: flex; align-items: center; gap: 9px; width: 100%; min-height: 34px; padding: 0 10px; border-radius: var(--radius-md); background: transparent; color: var(--text); font-size: 12px; text-align: left; }
+.sidebar-group .tool-buttons button:hover { background: var(--accent-soft); color: var(--accent); }
+.sidebar-group .terminal-icon { width: 18px; height: 18px; flex: none; }
+#sidebar.compact .sidebar-group { width: 40px; }
+#sidebar.compact .sidebar-group .fixed-tools-title { display: none; }
+#sidebar.compact .sidebar-group .tool-buttons button { width: 40px; height: 36px; padding: 0; justify-content: center; }
+#sidebar.compact .sidebar-group .tool-label { display: none; }
+
+/* Tipografía de interfaz: IBM Plex Sans incluida en la aplicación (licencia OFL en fonts/) */
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibmplexsans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibmplexsans-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibmplexsans-600.woff2") format("woff2"); font-weight: 600 700; font-style: normal; font-display: swap; }
+body, button, input, select { font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+
+/* Contadores de sesiones y conexiones remotas en la barra lateral */
+.count { margin-left: auto; flex: none; min-width: 18px; padding: 0 6px; border-radius: 99px; font: 600 10px/16px 'JetBrains Mono', ui-monospace, monospace; text-align: center; background: var(--surface); color: var(--muted); }
+.sidebar-project .count { background: color-mix(in srgb, var(--accent) 22%, transparent); color: var(--accent); margin-left: 0; }
+.remote-list { display: flex; flex-direction: column; gap: 2px; }
+.remote-item { display: flex; align-items: center; gap: 9px; width: 100%; min-height: 34px; padding: 0 10px; background: transparent; color: var(--text); border-radius: var(--radius-md); font-size: 12px; text-align: left; }
+.remote-item:hover { background: var(--accent-soft); color: var(--accent); }
+.remote-item .terminal-icon { width: 17px; height: 17px; flex: none; }
+.remote-item .remote-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.remote-item .remote-kind { font: 600 9px 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .06em; color: var(--muted); }
+#sidebar.compact .remote-list { align-items: center; }
+#sidebar.compact .remote-item { width: 40px; height: 36px; padding: 0; justify-content: center; }
+#sidebar.compact .remote-name, #sidebar.compact .remote-kind { display: none; }
+
+/* El nombre del proyecto actual no se parte en varias líneas */
+.sidebar-project #current { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; }
+.sidebar-project #current::before { display: inline-block; vertical-align: -3px; margin-right: var(--space-2); }
+
+/* Franja de cuota bajo el terminal: Claude y Codex siempre visibles */
+#ai-usage { display: none !important; }
+#quota-card {
+  flex-shrink: 0; display: flex; align-items: center; gap: var(--space-4); padding: 6px var(--space-4);
+  background: var(--panel); border-top: 1px solid var(--border); font-size: var(--qc-text, 12px); min-width: 0;
+}
+.qc-head { display: contents; }
+.qc-head > span { order: 1; flex: none; font: 600 10px 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.qc-gear { order: 3; flex: none; width: 26px; height: 26px; padding: 0; background: transparent; color: var(--muted); border-radius: var(--radius-sm); display: grid; place-items: center; }
+.qc-gear:hover { color: var(--accent); background: var(--accent-soft); }
+.qc-body { order: 2; flex: 1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px var(--space-5); }
+.qc-agent { display: flex; align-items: center; flex-wrap: wrap; gap: 4px var(--space-4); min-width: 0; }
+.qc-line { display: flex; align-items: baseline; gap: var(--space-2); flex: none; }
+.qc-line strong { font-weight: 600; color: var(--text); }
+.qc-model { color: var(--muted); font-size: .9em; white-space: nowrap; }
+.qc-state { font: 10px 'JetBrains Mono', ui-monospace, monospace; color: var(--muted); white-space: nowrap; }
+.qc-state.live { color: var(--accent); }
+.qc-state.live::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: var(--accent); }
+.qc-row { display: flex; align-items: center; gap: var(--space-2); --qc-fill: var(--qc-accent, var(--accent)); }
+.qc-row.warning { --qc-fill: var(--yellow); }
+.qc-row.low { --qc-fill: var(--red); }
+.qc-top { display: contents; }
+.qc-label { order: 1; color: var(--muted); }
+.qc-row > .qc-bar, .qc-row > .qc-seg, .qc-row > .qc-ring { order: 2; }
+.qc-value { order: 3; color: var(--text); font-variant-numeric: tabular-nums; font-weight: 600; min-width: 3.2ch; text-align: right; }
+.qc-row.warning .qc-value { color: var(--yellow); }
+.qc-row.low .qc-value { color: var(--red); }
+.qc-row small { order: 4; color: var(--muted); font-size: .85em; white-space: nowrap; }
+.qc-bar { width: 96px; height: var(--qc-height, 6px); background: var(--border); border-radius: 99px; overflow: hidden; }
+.qc-bar i { display: block; height: 100%; background: var(--qc-fill); border-radius: 99px; }
+.qc-seg { display: flex; gap: 2px; width: 84px; }
+.qc-seg i { flex: 1; height: var(--qc-height, 6px); background: var(--border); border-radius: 2px; }
+.qc-seg i.on { background: var(--qc-fill); }
+.qc-ring { width: 22px; height: 22px; border-radius: 50%; background: conic-gradient(var(--qc-fill) calc(var(--p) * 1%), var(--border) 0); }
+.qc-empty { margin: 0; color: var(--muted); font-size: .9em; }
+
+
+/* El grupo Remoto no es una sección plegable: no lleva la clase sidebar-section (sidebar.js la recorre entera). */
+.sidebar-group { margin-top: 17px; flex-shrink: 0; }
+#sidebar.compact .sidebar-group { margin-top: 14px; }
+
+/* Franja de cuota: la IA de la pestaña activa y todos los ajustes de «Visualización de cuota» */
+#quota-card { font-family: var(--qc-font, inherit); }
+#quota-card[data-size="compact"] { padding-block: 3px; }
+#quota-card[data-size="large"] { padding-block: 10px; }
+.qc-agent { flex: 1; }
+.qc-agent.idle { opacity: .75; }
+.qc-folder { color: var(--muted); font-size: .9em; white-space: nowrap; }
+.qc-folder::before { content: '· '; }
+.qc-updated { color: var(--muted); font: 10px 'JetBrains Mono', ui-monospace, monospace; white-space: nowrap; }
+/* Tarjetas: cada periodo en su caja */
+#quota-card[data-layout="cards"] .qc-row { padding: 4px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
+/* Apilada: un periodo bajo otro */
+#quota-card[data-layout="stack"] { align-items: flex-start; }
+#quota-card[data-layout="stack"] .qc-agent { flex-direction: column; align-items: stretch; gap: 6px; }
+#quota-card[data-layout="stack"] .qc-row { display: grid; grid-template-columns: 5ch 1fr auto; gap: 2px var(--space-3); }
+#quota-card[data-layout="stack"] .qc-row small { grid-column: 2 / -1; }
+#quota-card[data-layout="stack"] .qc-bar, #quota-card[data-layout="stack"] .qc-seg { width: auto; }
+
+/* Shells detectados */
+.detected-shells { display: flex; flex-direction: column; margin-top: var(--space-2); }
+.detected-title { padding: 6px var(--space-2) 2px; font: 600 9px 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+#sidebar.compact .detected-shells { display: none; }

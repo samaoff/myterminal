@@ -1,0 +1,19 @@
+# Comprobaciones de MyTerminal en cada push y pull request: sintaxis, ESLint sin avisos y pruebas unitarias.
+# Las pruebas de interfaz (npm run smoke) necesitan una sesión de escritorio y se ejecutan en local.
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run verify

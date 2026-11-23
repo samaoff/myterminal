@@ -1,0 +1,36 @@
+.aside-bottom{letter-spacing:0;font-size:11px;flex-shrink:0;border-top:1px solid var(--border);margin-top:auto;padding-top:14px;padding-bottom:3px}
+.version-history-button{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:9px 10px;text-align:left;background:var(--surface);border-radius:7px;font-size:12px;color:var(--text)}
+.version-history-button:hover{background:var(--accent-soft)}
+.aside-bottom .version-history-button span{display:inline;color:inherit;margin:0}
+.creator-credit{margin:12px 0 5px;color:var(--muted);font-size:11px;line-height:1.5}
+.creator-credit strong{color:var(--text);font-weight:600}
+.creator-website{color:var(--accent);text-decoration:none;font-size:12px}.creator-website:hover{text-decoration:underline}.creator-website:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+#about-compact{display:none;width:36px;height:36px;align-items:center;justify-content:center;border-radius:8px;background:var(--surface);color:var(--accent);font-size:19px;flex-shrink:0}
+#sidebar.compact #about-compact{display:flex;margin-top:5px;margin-bottom:5px}#about-compact:hover{background:var(--accent-soft)}
+#about-dialog{width:720px;max-width:94vw;max-height:88vh;padding:0;border:1px solid var(--border);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 22px 90px #0004;overflow:auto}
+#about-dialog::backdrop{background:#07122280;backdrop-filter:blur(5px)}
+#about-dialog>.panel-heading{position:sticky;top:0;background:var(--panel);z-index:1}
+.about-body{padding:22px}.about-identity{display:flex;align-items:center;gap:14px;padding-bottom:19px;border-bottom:1px solid var(--border)}
+.about-mark{font:24px Consolas,monospace;color:var(--accent);background:var(--accent-soft);border-radius:13px;padding:14px}
+.about-identity h2{font-size:21px;letter-spacing:-.4px;margin:0 0 5px;color:var(--text)}
+#about-version{font-size:12px;color:var(--muted)}
+.about-identity .creator-credit{margin:7px 0 3px}
+.about-body h3{font-size:13px;margin:24px 0 14px}
+.release-entry{margin-left:6px;border-left:2px solid var(--border);padding:0 0 16px 17px}
+.release-entry summary{display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px;line-height:1.5;color:var(--text);position:relative;list-style:none;font-size:12px;border-radius:3px}
+.release-entry summary::-webkit-details-marker{display:none}.release-entry summary::before{content:'';position:absolute;width:8px;height:8px;left:-22px;background:var(--muted);border:2px solid var(--panel);border-radius:50%}
+.release-entry summary::after{content:'＋';margin-left:auto;color:var(--muted)}.release-entry[open] summary::after{content:'−'}
+.release-title{color:var(--muted);font-size:12px}.release-current{font-size:10px;padding:2px 7px;border-radius:12px;background:var(--accent-soft);color:var(--accent)}
+.current-release{border-left-color:var(--accent)}.current-release summary::before{background:var(--accent)}
+.release-entry ul{margin:10px 0 0;padding-left:17px;color:var(--muted);font-size:12px;line-height:1.7}
+.release-entry li+li{margin-top:4px}
+html[data-theme=mac-glass] #about-dialog{background:#f6f9ffe8;backdrop-filter:blur(30px) saturate(130%);border-color:#fff}
+html[data-theme=mac-glass] #about-dialog>.panel-heading{background:#f6f9fff2}
+.update-section{padding:0 0 18px;border-bottom:1px solid var(--border)}
+.update-section .update-message{font-size:12px;line-height:1.6;margin:10px 0 14px;color:var(--text)}
+.update-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.update-buttons button{font-size:12px;padding:9px 12px}
+.update-section progress{width:100%;accent-color:var(--accent)}
+.update-section details{margin-top:15px}.update-section pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 'Segoe UI',sans-serif;color:var(--muted);max-height:220px;overflow:auto}
+.update-section label{display:block;font-size:12px;margin:10px 0}.update-section .settings-check{display:flex}
+.update-section>details>button{font-size:12px;margin:6px 6px 0 0}
+.update-badge{width:100%;background:var(--accent-soft);color:var(--accent);font-size:11px;border-radius:6px;padding:8px;margin-bottom:7px}

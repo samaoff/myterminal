@@ -1,0 +1,199 @@
+[
+  {
+    "version": "2.0.1",
+    "title": "Open source en GitHub",
+    "changes": [
+      "MyTerminal es open source con licencia MIT: el código está en github.com/samaoff/myterminal.",
+      "Las actualizaciones se descargan de GitHub Releases sin iniciar sesión; el token pasa a ser opcional y solo se envía a la API de GitHub.",
+      "El instalador se sigue comprobando con su SHA-256 antes de ejecutarse."
+    ]
+  },
+  {
+    "version": "2.0.0",
+    "title": "MyTerminal 2.0: versión oficial",
+    "changes": [
+      "Primera versión oficial del rediseño; la aplicación se llama ahora MyTerminal (convive con AI Terminal 1.x).",
+      "Nuevo diseño «Carbón Pro» y «Cristal líquido» renovado en oscuro, con más contraste en el texto atenuado.",
+      "Barra lateral centrada en las sesiones, agrupadas por proyecto, con estado, búsqueda y filtros.",
+      "Cabecera en una sola fila con menú «⋯»; atajos reorganizados para dejar Ctrl+letra al shell.",
+      "El terminal ocupa exactamente su hueco y ya no tapa la última fila."
+    ]
+  },
+  {
+    "version": "2.0.0-beta.4",
+    "title": "Segunda pantalla para cualquier dispositivo",
+    "changes": [
+      "La segunda pantalla ya no se presenta solo para iPad: funciona con cualquier navegador moderno (tableta, móvil u otro PC en la misma red). El botón de Herramientas se llama ahora «Segunda pantalla».",
+      "Nuevo botón «Quitar pantalla virtual» en el diálogo (solo quita el adaptador que instaló la aplicación).",
+      "Un solo botón crea la pantalla virtual, la envía al dispositivo y lleva el terminal a pantalla completa en ella."
+    ]
+  },
+  {
+    "version": "2.0.0-beta.3",
+    "title": "Segunda pantalla para iPad",
+    "changes": [
+      "Nueva segunda pantalla integrada: envía el terminal o una pantalla al iPad desde la paleta («Segunda pantalla (iPad)…») con QR o código de 6 cifras.",
+      "Pausa de privacidad, ajuste de imagen, indicador en la cabecera y reconexión automática.",
+      "Un solo botón crea la pantalla virtual, la envía al iPad y lleva el terminal a pantalla completa en ella (controlador MIT incluido, se instala solo si lo pides; se puede quitar desde el mismo diálogo)."
+    ]
+  },
+  {
+    "version": "2.0.0-beta.2",
+    "title": "Pantalla externa",
+    "changes": [
+      "Modo pantalla externa (Ctrl+Mayús+X o la paleta): lleva el terminal a otro monitor en pantalla completa, con la letra más grande y sin la barra lateral.",
+      "Detecta los monitores virtuales de Al lado (el iPad como segunda pantalla) y puede abrir Al lado desde la aplicación.",
+      "Si la pantalla externa se desconecta o sales de la pantalla completa a mano, el terminal vuelve solo a su sitio."
+    ]
+  },
+  {
+    "version": "2.0.0-beta.1",
+    "title": "AI Terminal Pro: nuevo diseño, paleta de comandos y más shells",
+    "changes": [
+      "Aspecto nuevo: temas Medianoche Pro y Papel Pro, iconos propios, IBM Plex Sans y JetBrains Mono incluidas.",
+      "Galería de diseños con diseños propios, exportar e importar, y deshacer.",
+      "Barra de título con pestañas, pestañas con estado, cabecera sobre cada panel y barra de estado con rama de Git.",
+      "Cuota de Claude o Codex bajo el terminal según la pestaña activa, con todos los ajustes de visualización.",
+      "Bloques de comando en PowerShell con resultado y duración, y visor de cambios junto al terminal.",
+      "Paleta de comandos (Ctrl+Mayús+P) y atajos de teclado configurables.",
+      "PowerShell 7, Símbolo del sistema, Git Bash y WSL detectados automáticamente.",
+      "Restaurar las pestañas de la sesión anterior y mantener los terminales en la bandeja al cerrar la ventana.",
+      "Render del terminal con GPU, seguridad reforzada de la ventana y datos separados de la aplicación original."
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "title": "Búsqueda en terminal e historial inteligente",
+    "changes": [
+      "Búsqueda interactiva con Ctrl+F en el texto conservado de cada terminal, resaltado de coincidencias, anterior y siguiente, y cierre con Escape.",
+      "PowerShell con sugerencias automáticas basadas en el historial, completado de comandos y rutas con Tab y búsqueda de comandos con Ctrl+R.",
+      "PSReadLine 2.3.6 incluido e historial de comandos independiente por perfil, conservado entre sesiones.",
+      "Cambio de perfil desde Entrar con cierre de las sesiones mediante la confirmación habitual; cancelar mantiene el perfil actual.",
+      "Corregido el tamaño del panel para que la terminal ocupe todo el espacio disponible al añadir el buscador."
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "title": "Explorador SFTP, transferencias múltiples y avisos",
+    "changes": [
+      "Explorador SFTP con paneles local y remoto, navegación por carpetas y nuevo diseño adaptado a los temas.",
+      "Selección múltiple con casillas, Ctrl, Mayús y Ctrl+A; subida y descarga en cola con progreso total y cancelación de los pendientes.",
+      "Los archivos existentes se conservan; un error permite continuar con los demás archivos y se muestra su detalle al terminar.",
+      "Acceso SFTP con contraseña, clave cifrada o agente SSH y comprobación de la huella del servidor; se mantiene la consola OpenSSH.",
+      "Pestañas con nombre y color configurables, indicador de salida sin leer y marcas de finalización correcta o con error.",
+      "Avisos configurables por pestaña al terminar procesos o comandos de PowerShell de más de diez segundos en segundo plano."
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "title": "Ventana configurable y nuevas fuentes de consola",
+    "changes": [
+      "Apertura maximizada por defecto, con ventanas grande o pequeña configurables por perfil en Personalización.",
+      "JetBrains Mono, Fira Code, Source Code Pro y Atkinson Hyperlegible Mono incluidas para usarlas sin instalación adicional."
+    ]
+  },
+  {
+    "version": "0.10.0",
+    "title": "Actualizaciones desde GitLab y espacio de trabajo flexible",
+    "changes": [
+      "Búsqueda de nuevas versiones desde Acerca de, con aviso de versión disponible y búsqueda al iniciar la aplicación instalada.",
+      "Descarga del instalador desde el GitLab del proyecto, progreso, cancelación y verificación SHA-256 antes de instalar.",
+      "Acceso a repositorios privados mediante token de lectura guardado con el cifrado de Windows, sin credenciales incluidas en el instalador.",
+      "Instalar y cerrar abre el instalador habitual; si hay terminales o escritorios abiertos permite cancelar su cierre.",
+      "Dos terminales visibles con orientación horizontal o vertical, tamaño ajustable, maximizar y arrastrar pestañas al espacio de trabajo.",
+      "Consulta de texto seleccionado con vista previa e inserción en una sesión local de Codex o Claude para revisar antes de enviar.",
+      "Salida del terminal agrupada con control de datos pendientes y ajustes de tamaño coordinados por fotograma.",
+      "Conexiones pasa a Herramientas y se abre en el panel derecho. Proyecto actual y proyectos recientes aparecen juntos, sin duplicar el actual."
+    ]
+  },
+  {
+    "version": "0.9.0",
+    "title": "Perfiles de usuario y conexiones remotas integradas",
+    "changes": [
+      "Perfiles de usuario con proyectos recientes, última carpeta, terminales propios y preferencias independientes; migración de la configuración existente al perfil Principal.",
+      "Diez temas nuevos, dieciséis en total; Samaapp pasa a llamarse Grafito y la selección se centraliza en Apariencia.",
+      "Barra lateral simplificada, con Conexiones fija encima de Herramientas y nuevos iconos de Skills, árbol de archivos y Git.",
+      "Proyectos recientes sin duplicados por rutas equivalentes y opción para quitarlos del historial sin borrar archivos.",
+      "Panel de cuota configurable con tamaños, fuentes, colores, barras, segmentos, anillos, tarjetas, vista previa y datos de sesión opcionales.",
+      "Conexiones SSH y SFTP en pestañas, guardadas por usuario, con usuario, puerto, clave SSH y carpeta local configurables.",
+      "Escritorio remoto RDP dentro de una pestaña mediante el control nativo de Windows, con teclado, ratón, ajuste al espacio disponible, ampliación y desconexión.",
+      "Intervalo de envío del ratón RDP reducido de 100 a 16 ms y componentes versionados para no sustituir los de una sesión abierta.",
+      "Protección del cambio de perfil con sesiones abiertas y conservación de los ajustes y archivos existentes."
+    ]
+  },
+  {
+    "version": "0.8.0",
+    "title": "Terminales propios e iconos de sesión",
+    "changes": [
+      "Iniciar sesión pasa a llamarse Terminales.",
+      "Iconos identificativos de Codex, Claude, PowerShell y terminales propios en la barra lateral y en cada pestaña.",
+      "Creación, edición y eliminación de accesos a CLI propios, con plantilla Ollama y argumentos por línea.",
+      "Apariencia queda fija en el pie de la barra lateral, encima de la versión."
+    ]
+  },
+  {
+    "version": "0.7.1",
+    "title": "Inicio limpio y marca simplificada",
+    "changes": [
+      "Eliminado el crédito duplicado bajo AI Terminal; el creador y la web permanecen en el pie.",
+      "La aplicación inicia con los paneles de herramientas cerrados. Skills se abre solo al seleccionarlo.",
+      "Tema, personalización y barra lateral guardados en el archivo de preferencias de la aplicación para recuperarlos entre aperturas."
+    ]
+  },
+  {
+    "version": "0.7.0",
+    "title": "Historial de versiones y autoría",
+    "changes": [
+      "Versión instalada y acceso al historial desde la barra lateral.",
+      "Crédito del creador samaapp y enlace a samaapp.es.",
+      "Acceso al historial también con la barra lateral reducida a iconos."
+    ]
+  },
+  {
+    "version": "0.6.0",
+    "title": "Mac cristal y personalización de consola",
+    "changes": [
+      "Tema Mac cristal con paneles translúcidos y desenfoque.",
+      "Ajustes de fuente, tamaño, grosor, interlineado y separación de letras.",
+      "Colores y cursor personalizables, vista previa y atajos de tamaño.",
+      "Guardado automático de preferencias y opción de restablecer."
+    ]
+  },
+  {
+    "version": "0.5.0",
+    "title": "Barra lateral plegable y uso de IA",
+    "changes": [
+      "Secciones plegables para sesiones, herramientas y proyectos recientes.",
+      "Barra lateral reducible a una columna de iconos.",
+      "Indicador inferior de cuota para Codex y Claude cuando el proveedor facilita los datos.",
+      "Contexto de Claude separado de la cuota de la cuenta."
+    ]
+  },
+  {
+    "version": "0.4.1",
+    "title": "Ajuste de la terminal y los paneles",
+    "changes": [
+      "Recálculo del ancho de la terminal al abrir y cerrar los paneles.",
+      "Contención de textos largos para evitar superposiciones."
+    ]
+  },
+  {
+    "version": "0.4.0",
+    "title": "Proyectos, skills duplicadas y Git",
+    "changes": [
+      "Nombre AI Terminal y crédito Desarrollado por samaapp.",
+      "Filtro de skills duplicadas y eliminación de copias editables a la papelera.",
+      "Iconos para ver el árbol del proyecto y abrir su carpeta.",
+      "Control de Git: cambios, rama, historial, preparación de archivos, commits y sincronización."
+    ]
+  },
+  {
+    "version": "0.3.0",
+    "title": "Terminal unificada, skills y primeros temas",
+    "changes": [
+      "Sesiones de Codex, Claude Code y PowerShell por proyecto.",
+      "Paneles para consultar, crear e importar skills y revisar archivos y diferencias.",
+      "Primeros temas seleccionables: Samaapp, Claro, Nord, Drácula y Ámbar."
+    ]
+  }
+]

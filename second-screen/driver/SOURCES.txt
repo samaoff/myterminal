@@ -1,0 +1,6 @@
+Virtual Display Driver 25.7.23 (MIT)
+https://github.com/VirtualDrivers/Virtual-Display-Driver/releases/tag/25.7.23
+Original VDD.Control.25.7.23.zip SHA256: a701f2272e9fcf382849b24f913c6dd07597b3b1116525f2e90182f019609154
+Nefcon 1.14.0 (MIT)
+https://github.com/nefarius/nefcon/releases/tag/v1.14.0
+Original nefcon_v1.14.0.zip SHA256: a15557da24a9efca203158de3b43b0eaf982db231f0194031f1ed428bc13e669

@@ -1,0 +1,15 @@
+node_modules/
+*.log
+smoke-result.json
+preview.png
+dist/
+smoke-packaged-result.json
+dist-*/
+*-result.json
+preview-*.png
+review-about-result.json
+review-startup-result.json
+.env
+.env.*
+!.env.example
+native/rdp-host*.exe

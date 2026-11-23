@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'self' data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyTerminal</title>
+  <link rel="stylesheet" href="node_modules/@xterm/xterm/css/xterm.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="panels.css">
+  <link rel="stylesheet" href="features.css">
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="console-settings.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="custom-terminals.css">
+  <link rel="stylesheet" href="workspace-enhancements.css">
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="design-gallery.css">
+  <link rel="stylesheet" href="design-shell.css">
+  <link rel="stylesheet" href="design-pro.css">
+  <link rel="stylesheet" href="sidebar-sessions.css">
+  <link rel="stylesheet" href="design-carbon.css">
+  <link rel="stylesheet" href="theme-glass.css">
+</head>
+<body>
+  <aside id="sidebar" aria-label="Navegación principal">
+    <div class="brand"><button id="sidebar-toggle" aria-label="Reducir barra lateral" aria-expanded="true" aria-controls="sidebar" title="Reducir barra lateral"><span class="ui-ic" data-ui-icon="menu" aria-hidden="true"></span></button><div class="brand-text">MyTerminal</div></div>
+    <div class="sidebar-scroll"><button id="folder" class="primary"><span aria-hidden="true" class="ui-ic" data-ui-icon="plus"></span><span class="sidebar-label"> Abrir proyecto</span></button>
+    <div class="sidebar-project"><h2>PROYECTO ACTUAL</h2>
+    <div id="current">Selecciona una carpeta</div><div class="project-actions"><button id="project-tree" class="secondary" title="Ver árbol de archivos" aria-label="Ver árbol de archivos"><span class="ui-ic" data-ui-icon="eye" aria-hidden="true"></span></button><button id="project-open" class="secondary" title="Abrir carpeta del proyecto" aria-label="Abrir carpeta del proyecto"><span class="ui-ic" data-ui-icon="folder-open" aria-hidden="true"></span></button></div>
+    </div><section class="sidebar-section" data-section="sessions"><button class="section-toggle" aria-expanded="true" aria-controls="section-sessions" title="Terminales"><span class="section-icon" aria-hidden="true" data-ui-icon="terminal"></span><span class="section-title">TERMINALES</span><span class="section-chevron" aria-hidden="true" data-ui-icon="chevron"></span></button><div id="section-sessions" class="section-content">
+    <button data-kind="codex" class="launch"><span class="terminal-label">Codex</span> <span class="arrow" data-ui-icon="external"></span></button>
+    <button data-kind="claude" class="launch"><span class="terminal-label">Claude Code</span> <span class="arrow" data-ui-icon="external"></span></button>
+    <button data-kind="powershell" class="launch"><span class="terminal-label">PowerShell</span> <span class="arrow" data-ui-icon="external"></span></button>
+    <div id="custom-terminals"></div><button id="add-terminal" class="secondary"><span class="ui-ic" data-ui-icon="plus" aria-hidden="true"></span> Añadir terminal</button></div></section><section class="sidebar-section" data-section="recent"><button class="section-toggle" aria-expanded="true" aria-controls="section-recent" title="Proyectos recientes"><span class="section-icon" aria-hidden="true" data-ui-icon="folder"></span><span class="section-title">PROYECTOS RECIENTES</span><span class="section-chevron" aria-hidden="true" data-ui-icon="chevron"></span></button><div id="section-recent" class="section-content">
+    <div id="recent"></div></div></section>
+    </div><div class="sidebar-fixed"><section class="sidebar-section" data-section="connections"><button class="section-toggle" aria-expanded="true" aria-controls="section-connections" title="Conexiones remotas"><span class="section-icon" id="connections-icon" aria-hidden="true" data-ui-icon="network"></span><span class="section-title">CONEXIONES</span><span class="section-chevron" aria-hidden="true" data-ui-icon="chevron"></span></button><div id="section-connections" class="section-content"><div id="remote-connections"></div><button id="add-connection" class="secondary"><span class="ui-ic" data-ui-icon="plus" aria-hidden="true"></span> Nueva conexión</button></div></section><nav id="fixed-tools" aria-label="Herramientas del proyecto"><div class="fixed-tools-title">Herramientas</div><div class="tool-buttons"><button data-panel="skills" title="Skills" aria-label="Abrir Skills"><span class="tool-label">Skills</span></button><button data-panel="files" title="Árbol de archivos" aria-label="Abrir árbol de archivos"><span class="tool-label">Archivos</span></button><button data-panel="changes" title="Git" aria-label="Abrir Git"><span class="tool-label">Git</span></button><button id="gallery-open" type="button" title="Galería de diseños" aria-label="Abrir galería de diseños"><span class="tool-label">Diseños</span></button><button id="second-screen-open" type="button" title="Enlazar una tableta, móvil u otro PC como segunda pantalla (QR)" aria-label="Enlazar un dispositivo como segunda pantalla"><span class="tool-label">Segunda pantalla</span></button></div></nav><button id="appearance-icon" title="Apariencia" aria-label="Abrir apariencia"><span class="ui-ic" data-ui-icon="palette"></span> <span class="appearance-label">Apariencia</span><span class="appearance-chevron" aria-hidden="true" data-ui-icon="settings"></span></button><button id="about-compact" aria-label="Acerca de MyTerminal e historial de versiones" title="Historial de versiones · samaapp"><span class="ui-ic" data-ui-icon="info" aria-hidden="true"></span></button><div class="aside-bottom"><button id="version-history-trigger" class="version-history-button" title="Ver historial de versiones"><span id="current-version">Historial de versiones</span><span aria-hidden="true">↗</span></button><p class="creator-credit">Creado por <strong>samaapp</strong></p><a class="creator-website" href="https://samaapp.es" title="Abrir samaapp.es en tu navegador">samaapp.es ↗</a></div></div>
+  </aside>
+  <main>
+    <header><div><span class="mac-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><strong>Espacio de trabajo</strong><span id="path">Abre un proyecto para empezar</span></div><nav id="tabs" aria-label="Sesiones"></nav><div class="header-actions"><button id="console-customize" class="secondary console-customize" title="Personalizar consola" aria-label="Personalizar consola"><span class="ui-ic" data-ui-icon="settings"></span> <span class="customize-label">Personalizar</span></button><span class="badge">● Terminal local</span></div></header>
+    <div id="work-area"><section id="workspace">
+      <div id="welcome"><div class="welcome-icon">&gt;_</div><h1>Tu proyecto. Tus herramientas.</h1><p>Codex, Claude y tus propios terminales.<br>Abre una carpeta y elige con qué trabajar.</p><button id="welcome-open" class="primary">Abrir mi primer proyecto</button><div class="hint">Las herramientas utilizan sus propios inicios de sesión.</div></div>
+    </section>
+    <section id="inspector" hidden aria-label="Herramientas del proyecto">
+      <div class="panel-heading"><strong id="panel-title">Skills</strong><div><button id="panel-refresh" title="Actualizar" aria-label="Actualizar"><span class="ui-ic" data-ui-icon="refresh" aria-hidden="true"></span></button><button id="panel-close" title="Cerrar panel">×</button></div></div>
+      <div id="panel-context"></div>
+      <div id="skills-controls">
+        <label class="duplicates-filter"><input type="checkbox" id="duplicates-only"> Solo duplicados</label><input id="skill-search" type="search" placeholder="Buscar skills…" aria-label="Buscar skills">
+        <div class="filter-row"><select id="skill-agent" aria-label="Filtrar IA"><option value="">Todas las IA</option><option>Codex</option><option>Claude</option></select><select id="skill-scope" aria-label="Filtrar ubicación"><option value="">Todas las ubicaciones</option><option value="project">Proyecto y superiores</option><option value="personal">Personales / sistema</option><option value="plugin">Cachés de plugins</option></select></div>
+        <details id="add-skill"><summary><span class="ui-ic" data-ui-icon="plus" aria-hidden="true"></span> Añadir skill desde carpeta</summary><p>Selecciona una carpeta con SKILL.md. Se copiarán también sus scripts y referencias.</p><label for="skill-target">Dónde añadirla</label><select id="skill-target"><option value="codex-project">Proyecto · Codex</option><option value="claude-project">Proyecto · Claude</option><option value="codex-user">Todos mis proyectos · Codex</option><option value="claude-user">Todos mis proyectos · Claude</option></select><button id="skill-import" class="primary">Seleccionar carpeta e importar</button><p>Se conserva el original y no se sobrescriben skills existentes. Usa únicamente skills de confianza. Abre una sesión nueva para comprobar que la IA la detecta.</p></details>
+        <button id="skill-new" class="secondary"><span class="ui-ic" data-ui-icon="plus" aria-hidden="true"></span> Crear una skill</button>
+        <p class="panel-note">Skills encontradas en disco. Las de cachés de plugins pueden no estar activadas. La lista de la propia IA confirma cuáles tiene disponibles.</p>
+      </div>
+      <div id="panel-message" role="status"></div><div id="panel-content"></div>
+    </section></div>
+    <section id="ai-usage" hidden aria-label="Uso de la sesión de IA"><div class="usage-heading"><strong id="usage-agent"></strong><span id="usage-note"></span><button id="usage-refresh" title="Actualizar datos de uso" aria-label="Actualizar datos de uso"><span class="ui-ic" data-ui-icon="refresh" aria-hidden="true"></span></button></div><div id="usage-meters"></div></section>
+    <footer><span id="status" role="status">Listo para empezar</span><span>Copiar: Ctrl+Shift+C · Pegar: Ctrl+Shift+V</span></footer>
+  </main>
+  <dialog id="viewer"><div class="panel-heading"><strong id="viewer-title"></strong><button id="viewer-close">Cerrar ×</button></div><div id="viewer-path"></div><div id="viewer-tools"></div><pre id="viewer-content"></pre></dialog>
+  <dialog id="skill-editor"><form id="skill-form"><div class="panel-heading"><strong>Crear una skill</strong><button type="button" id="editor-close">Cerrar ×</button></div><div class="form-body"><label>Nombre<input id="new-skill-name" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxlength="64" placeholder="revisar-mi-proyecto"></label><label>Cuándo debe usarse<textarea id="new-skill-description" required maxlength="1024" rows="3" placeholder="Usar cuando se revisen cambios de este proyecto antes de un commit."></textarea></label><label>Instrucciones<textarea id="new-skill-instructions" required maxlength="100000" rows="9" placeholder="Explica los pasos, qué debe comprobar y cómo presentar el resultado."></textarea></label><label>Destino<select id="new-skill-target"><option value="codex-project">Proyecto · Codex</option><option value="claude-project">Proyecto · Claude</option><option value="codex-user">Todos mis proyectos · Codex</option><option value="claude-user">Todos mis proyectos · Claude</option></select></label><p id="editor-error" role="status"></p><button class="primary" type="submit">Previsualizar antes de guardar</button></div></form></dialog>
+  <dialog id="skill-preview"><div class="panel-heading"><strong id="preview-title">Revisar skill</strong><button id="preview-close">Cancelar ×</button></div><div class="form-body"><p id="preview-destination"></p><p id="preview-duplicates"></p><details><summary>Archivos incluidos</summary><pre id="preview-files"></pre></details><pre id="preview-content"></pre><p id="preview-error" role="status"></p><button id="preview-save" class="primary">Confirmar y guardar</button></div></dialog>
+
+  <dialog id="console-settings" aria-labelledby="console-settings-title">
+    <div class="panel-heading"><strong id="console-settings-title">Personalizar consola</strong><button id="console-settings-close" aria-label="Cerrar personalización">Cerrar ×</button></div>
+    <div class="settings-body">
+      <p class="settings-intro">Los cambios se guardan automáticamente y se aplican a todas tus consolas. Puedes ajustarlos sin cerrar las sesiones.</p>
+      <div class="settings-grid"><div class="settings-field"><label for="opening-size">Tamaño al abrir la aplicación</label><select id="opening-size"><option value="maximized">Maximizada (predeterminado)</option><option value="large">Ventana grande</option><option value="small">Ventana pequeña</option></select><small>Se aplica ahora y se guarda para las próximas aperturas de este perfil.</small></div>
+        <div class="settings-field"><label for="settings-theme">Tema de la aplicación</label><select id="settings-theme"></select></div>
+        <div class="settings-field"><label for="console-font">Fuente de la consola</label><select id="console-font"><option value="jetbrains">JetBrains Mono · incluida</option><option value="fira">Fira Code · incluida</option><option value="source-code">Source Code Pro · incluida</option><option value="atkinson">Atkinson Hyperlegible Mono · incluida</option><option value="cascadia">Cascadia Code</option><option value="cascadia-mono">Cascadia Mono</option><option value="consolas">Consolas</option><option value="courier">Courier New</option><option value="lucida">Lucida Console</option><option value="system">Monoespaciada del sistema</option></select><small>Si la fuente no está instalada, se usa una alternativa monoespaciada.</small></div>
+        <div class="settings-field"><label for="console-size">Tamaño del texto</label><div class="settings-range"><button id="console-smaller" aria-label="Reducir tamaño del texto">−</button><input id="console-size" type="range" min="10" max="32" step="1"><button id="console-larger" aria-label="Aumentar tamaño del texto">＋</button><output id="console-size-value" for="console-size"></output></div></div>
+        <div class="settings-field"><label for="console-weight">Grosor del texto</label><select id="console-weight"><option value="400">Normal</option><option value="500">Medio</option><option value="600">Seminegrita</option><option value="700">Negrita</option></select></div>
+        <div class="settings-field"><label for="console-line-height">Interlineado</label><div class="settings-range"><input id="console-line-height" type="range" min="1" max="1.8" step="0.1"><output id="console-line-height-value" for="console-line-height"></output></div></div>
+        <div class="settings-field"><label for="console-letter-spacing">Separación entre letras</label><div class="settings-range"><input id="console-letter-spacing" type="range" min="0" max="3" step="0.25"><output id="console-letter-spacing-value" for="console-letter-spacing"></output></div></div>
+        <div class="settings-field"><label for="console-cursor">Forma del cursor</label><select id="console-cursor"><option value="block">Bloque</option><option value="bar">Barra vertical</option><option value="underline">Subrayado</option></select></div>
+        <div class="settings-field"><label class="settings-check"><input type="checkbox" id="console-blink"> Cursor parpadeante</label></div>
+      </div>
+      <hr class="settings-separator">
+      <label class="settings-check"><input type="checkbox" id="console-custom-colors"> Usar colores personalizados para la consola</label>
+      <p class="settings-intro">Si activas esta opción, tus colores de consola se conservan al cambiar de tema.</p>
+      <fieldset id="console-color-fields" aria-label="Colores de la consola">
+        <label class="color-field">Fondo<input type="color" data-console-color="background" aria-label="Color: Fondo"></label><label class="color-field">Texto<input type="color" data-console-color="foreground" aria-label="Color: Texto"></label><label class="color-field">Cursor<input type="color" data-console-color="cursor" aria-label="Color: Cursor"></label><label class="color-field">Selección<input type="color" data-console-color="selectionBackground" aria-label="Color: Selección"></label><label class="color-field">Rojo<input type="color" data-console-color="red" aria-label="Color: Rojo"></label><label class="color-field">Verde<input type="color" data-console-color="green" aria-label="Color: Verde"></label><label class="color-field">Amarillo<input type="color" data-console-color="yellow" aria-label="Color: Amarillo"></label><label class="color-field">Azul<input type="color" data-console-color="blue" aria-label="Color: Azul"></label><label class="color-field">Magenta<input type="color" data-console-color="magenta" aria-label="Color: Magenta"></label><label class="color-field">Cian<input type="color" data-console-color="cyan" aria-label="Color: Cian"></label>
+      </fieldset>
+      <button id="console-colors-reset" class="secondary" style="margin-top:12px">Usar colores del tema</button>
+      <hr class="settings-separator">
+      <strong style="font-size:12px">Vista previa</strong>
+      <pre id="console-preview" aria-label="Vista previa de la consola"><span class="preview-accent">samaapp</span> ~/mi-proyecto
+$ Tu espacio, a tu manera. <span class="preview-cursor" aria-hidden="true"></span></pre>
+      <div class="settings-bottom"><p>Atajos: Ctrl + / − para el tamaño<br>Ctrl 0 vuelve a 14 px.</p><button id="console-reset" class="secondary">Restablecer consola</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="about-dialog" aria-labelledby="about-title"><div class="panel-heading"><strong id="about-title">Acerca de MyTerminal</strong><button id="about-close" aria-label="Cerrar historial de versiones">Cerrar ×</button></div><div class="about-body"><div class="about-identity"><div class="about-mark" aria-hidden="true">&gt;_</div><div><h2>MyTerminal</h2><div id="about-version">Versión instalada</div><p class="creator-credit">Creado por <strong>samaapp</strong></p><a class="creator-website" href="https://samaapp.es" title="Abrir samaapp.es en tu navegador">samaapp.es ↗</a></div></div><h3>Historial de versiones</h3><div id="release-list">Cargando versiones…</div></div></dialog>
+  <dialog id="terminal-editor" aria-labelledby="terminal-editor-title"><form id="terminal-form"><div class="panel-heading"><strong id="terminal-editor-title">Añadir terminal</strong><button type="button" id="terminal-editor-close" aria-label="Cerrar editor de terminal">Cerrar ×</button></div><div class="form-body"><div class="terminal-preset-row"><span>Configura tu herramienta de línea de comandos.</span><button type="button" id="terminal-preset-ollama" class="secondary">Plantilla Ollama</button></div><label>Nombre<input id="terminal-name" required maxlength="48" placeholder="Mi chat local"></label><label>Programa o ruta al ejecutable<input id="terminal-command" required maxlength="2048" placeholder="ollama"><small>Solo el programa, sin comillas ni argumentos. También admite rutas con espacios.</small></label><label>Argumentos · uno por línea<textarea id="terminal-args" rows="4" placeholder="run&#10;nombre-de-tu-modelo"></textarea><small>Para un chat de Ollama, escribe run y el nombre del modelo en líneas separadas. Cada línea es un argumento completo; no añadas comillas a las rutas.</small></label><label>Icono<select id="terminal-icon"><option value="terminal">Terminal</option><option value="ollama">Ollama</option><option value="code">Código</option><option value="spark">Asistente</option><option value="powershell">PowerShell</option><option value="codex">Codex</option><option value="claude">Claude</option></select></label><p>Se abrirá en el proyecto seleccionado. Guardar el acceso no inicia ni instala la herramienta.</p><p id="terminal-editor-error" role="status"></p><button id="terminal-save" type="submit" class="primary">Guardar terminal</button></div></form></dialog>
+  <link rel="stylesheet" href="session-tools.css">
+  <script src="node_modules/@xterm/xterm/lib/xterm.js"></script>
+  <script src="node_modules/@xterm/addon-fit/lib/addon-fit.js"></script>
+  <script src="node_modules/@xterm/addon-search/lib/addon-search.js"></script>
+  <script src="node_modules/@xterm/addon-webgl/lib/addon-webgl.js"></script>
+  <script src="terminal-search.js"></script>
+  <script src="themes.js"></script>
+  <script src="terminal-settings.js"></script>
+  <script src="terminal-icons.js"></script>
+  <script src="renderer.js"></script>
+  <script src="panels.js"></script>
+  <script src="features.js"></script>
+  <script src="sidebar.js"></script>
+  <script src="usage-ui.js"></script>
+  <script src="about.js"></script>
+  <script src="custom-terminals.js"></script>
+  <script src="user-profiles-ui.js"></script>
+  <script src="remote-connections-ui.js"></script>
+  <script src="rdp-ui.js"></script>
+  <script src="workspace-enhancements.js"></script>
+  <script src="updates-ui.js"></script>
+  <script src="sftp-browser-ui.js"></script>
+  <script src="session-tools.js"></script>
+  <script src="design-gallery.js"></script>
+  <script src="shell-status.js"></script>
+  <script src="welcome-home.js"></script>
+  <script src="command-blocks.js"></script>
+  <script src="diff-dock.js"></script>
+  <script src="sidebar-groups.js"></script>
+  <script src="quota-card.js"></script>
+  <script src="detected-shells.js"></script>
+  <script src="gpu-render.js"></script>
+  <script src="background-mode.js"></script>
+  <script src="session-restore.js"></script>
+  <script src="pane-header.js"></script>
+  <script src="shortcuts.js"></script>
+  <script src="external-display.js"></script>
+  <script src="second-screen-ui.js"></script>
+  <script src="command-palette.js"></script>
+  <script src="session-list.js"></script>
+  <script src="header-actions.js"></script>
+</body>
+</html>

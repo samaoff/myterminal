@@ -1,0 +1,88 @@
+#sidebar{overflow:hidden;padding-bottom:12px}
+.sidebar-scroll{flex:1;min-height:0;width:100%;overflow-y:auto;overflow-x:hidden;padding-right:4px;scrollbar-width:thin}
+.sidebar-scroll>#folder{width:100%}
+.sidebar-fixed{width:100%;flex-shrink:0;padding-top:12px;border-top:1px solid var(--border);margin-top:12px}
+.sidebar-fixed #appearance-icon{display:flex;width:100%;gap:9px;justify-content:flex-start;padding:0 10px;font-size:17px;margin:0}
+.appearance-label{font-size:12px;color:var(--text)}.appearance-chevron{margin-left:auto;font-size:12px;color:var(--muted)}
+.sidebar-fixed .aside-bottom{margin-top:12px;padding-top:12px}
+#sidebar.compact .sidebar-scroll{display:flex;flex-direction:column;align-items:center;padding-right:0}
+#sidebar.compact .sidebar-fixed{display:flex;flex-direction:column;align-items:center;padding-top:10px;margin-top:10px}
+#sidebar.compact .appearance-label,#sidebar.compact .appearance-chevron{display:none}
+#sidebar.compact .sidebar-fixed #appearance-icon{width:36px;height:36px;padding:0;justify-content:center;margin:0 0 4px}
+.terminal-icon{width:21px;height:21px;flex-shrink:0;display:inline-block;color:var(--muted)}
+.terminal-icon[data-icon=codex]{color:var(--text)}.terminal-icon[data-icon=claude]{color:#d3875d}.terminal-icon[data-icon=powershell]{color:var(--blue)}.terminal-icon[data-icon=ollama]{color:var(--text)}.terminal-icon[data-icon=spark]{color:var(--accent)}
+.tab>.terminal-icon{width:17px;height:17px}.terminal-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#section-sessions>.launch{width:100%}.custom-terminal-row{display:flex;align-items:center;min-width:0;gap:2px}.custom-terminal-row .launch{flex:1;min-width:0;padding-left:10px;padding-right:3px;gap:9px}
+.custom-terminal-row .arrow{display:none}.profile-action{flex-shrink:0;padding:6px 4px;background:transparent;color:var(--muted);border-radius:5px;font-size:14px}.profile-action:hover{color:var(--text);background:var(--surface)}
+#add-terminal{width:100%;margin-top:8px;text-align:left}
+#terminal-editor{width:620px;max-width:94vw;max-height:88vh;border:1px solid var(--border);border-radius:14px;padding:0;background:var(--panel);color:var(--text);box-shadow:0 22px 90px #0004;overflow:auto}
+#terminal-editor::backdrop{background:#07122280;backdrop-filter:blur(5px)}
+#terminal-editor .panel-heading{position:sticky;top:0;background:var(--panel);z-index:1}
+#terminal-editor .form-body label{font-size:12px;color:var(--text)}
+#terminal-editor .form-body small{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.5}
+#terminal-editor .form-body p{color:var(--muted)}
+#terminal-editor-error{color:var(--red)!important}
+.terminal-preset-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px;font-size:12px;color:var(--muted)}
+html[data-theme=mac-glass] #terminal-editor{background:#f6f9ffe8;backdrop-filter:blur(30px) saturate(130%);border-color:#fff}
+html[data-theme=mac-glass] #terminal-editor .panel-heading{background:#f6f9fff2}
+
+/* Keep navigation quiet, with actions available on hover and keyboard focus. */
+.sidebar-section{margin-top:14px}
+.section-toggle{font-size:11px;letter-spacing:.3px}
+.section-icon{color:var(--muted);font-size:15px}
+#sidebar .launch{background:transparent;border-color:transparent;margin-bottom:2px}
+#sidebar .launch:hover{background:var(--surface)}
+#sidebar .launch .arrow{display:none}
+#add-terminal{background:transparent;border:1px dashed var(--border);color:var(--muted)}
+.tool-buttons{display:flex;flex-direction:column;gap:2px}
+.tool-buttons button{text-align:left;background:transparent;padding:8px 10px;color:var(--muted)}
+.tool-buttons button:hover{background:var(--surface);color:var(--text)}
+.recent-row{display:flex;align-items:center;gap:4px;min-width:0;border-radius:7px}
+.recent-row:hover,.recent-row:focus-within{background:var(--surface)}
+.recent-row .recent{flex:1;min-width:0;margin:0;background:transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.recent-remove{opacity:0;font-size:18px;background:transparent;color:var(--muted)}
+.recent-row:hover .recent-remove,.recent-row:focus-within .recent-remove{opacity:1}
+.recent-remove:hover{color:var(--red)}
+.recent-empty{font-size:11px;line-height:1.6;color:var(--muted);padding:0 8px}
+.sidebar-fixed .aside-bottom{border-top:0;margin-top:6px;padding-top:0}
+.sidebar-fixed .creator-credit,.sidebar-fixed .creator-website{display:none}
+@media (hover:none){.recent-remove{opacity:1}}
+#fixed-tools{width:100%;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.fixed-tools-title{font-size:10px;letter-spacing:.5px;color:var(--muted);padding:0 10px 7px}
+#fixed-tools .tool-buttons button{display:flex;align-items:center;gap:9px;width:100%;min-height:34px;border-radius:7px;color:var(--text);font-size:12px}
+#fixed-tools .tool-buttons button:hover,#fixed-tools .tool-buttons button.selected{background:var(--accent-soft);color:var(--accent)}
+#fixed-tools .terminal-icon{width:18px;height:18px}
+#fixed-tools [data-icon=git]{color:#e87858}
+#sidebar.compact #fixed-tools{width:40px;margin-bottom:8px;padding-bottom:8px}
+#sidebar.compact .fixed-tools-title,#sidebar.compact .tool-label{display:none}
+#sidebar.compact #fixed-tools .tool-buttons button{width:40px;height:36px;padding:0;justify-content:center}
+.remote-connection-row{display:flex;align-items:center;gap:2px;min-width:0}
+.remote-connection-row .launch{flex:1;min-width:0;gap:8px;padding:8px 4px 8px 10px}
+.remote-protocol{font-size:9px;color:var(--muted);flex-shrink:0}
+.remote-empty{font-size:10px;color:var(--muted);padding:3px 8px;line-height:1.6}
+#add-connection{width:100%;margin-top:6px;background:transparent;border:1px dashed var(--border);color:var(--muted);text-align:left}
+#connections-icon{display:flex;align-items:center;justify-content:center}#connections-icon svg{width:17px;height:17px}
+.terminal-icon[data-icon=ssh]{color:var(--cyan)}.terminal-icon[data-icon=sftp]{color:var(--yellow)}.terminal-icon[data-icon=rdp]{color:var(--blue)}
+#remote-editor{width:640px;max-width:94vw;max-height:88vh;overflow:auto;padding:0;border:1px solid var(--border);border-radius:14px;background:var(--panel);color:var(--text)}
+#remote-editor::backdrop{background:#07122280;backdrop-filter:blur(5px)}
+#remote-editor .panel-heading{position:sticky;top:0;background:var(--panel);z-index:1}
+.remote-form-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.remote-form-grid label{min-width:0;font-size:12px}.remote-wide{grid-column:1/-1}
+.remote-path{display:flex;align-items:center;gap:6px}.remote-path input{min-width:0;flex:1}
+.remote-path button{flex-shrink:0}.remote-form-grid .settings-check{display:flex;gap:8px;align-items:center}
+.remote-form-grid input[type=checkbox]{width:auto;margin:0}
+.remote-form-grid [hidden]{display:none}
+.remote-help,.remote-client-status{font-size:12px;line-height:1.6;color:var(--muted)}
+#remote-editor-error{font-size:12px;color:var(--red)}
+.remote-form-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:15px}
+.rdp-pane{display:flex;flex-direction:column;padding:0!important;background:var(--bg)}
+.rdp-pane[hidden]{display:none}
+.rdp-toolbar{display:flex;align-items:center;gap:7px;padding:8px 12px;min-height:44px;border-bottom:1px solid var(--border);background:var(--panel);flex-shrink:0}
+.rdp-status{flex:1;min-width:0;color:var(--muted);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rdp-toolbar .secondary{padding:6px 9px;font-size:11px}
+.rdp-viewport{flex:1;min-height:0;min-width:0;overflow:hidden;background:var(--bg);color:var(--muted);font-size:12px}
+.rdp-pane:fullscreen{width:100vw;height:100vh;background:var(--bg)}
+.sidebar-fixed>[data-section=connections]{width:100%;margin:0 0 8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.sidebar-fixed #remote-connections{max-height:clamp(36px,12vh,100px);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+.sidebar-fixed #section-connections{padding-top:0}
+#sidebar.compact .sidebar-fixed>[data-section=connections]{width:40px;margin:0 0 8px;padding-bottom:8px}

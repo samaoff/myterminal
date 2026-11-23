@@ -1,0 +1,41 @@
+/* Carbón Pro: negro neutro, sesiones con estado en la barra lateral y diffs a fila completa.
+   Todo va limitado a [data-theme="carbon"] para no tocar los demás diseños. */
+[data-theme="carbon"] {
+  --diff-add: #0f3019;
+  --diff-remove: #3d1316;
+  --carbon-done: #7ad192;
+}
+
+/* Pestañas: punto verde al terminar y línea de acento en la activa */
+[data-theme="carbon"] .tab-dot[data-state="done"] { background: var(--carbon-done); }
+[data-theme="carbon"] #tabs .tab { border-radius: 0; }
+[data-theme="carbon"] #tabs .tab.active { box-shadow: inset 0 -2px 0 var(--accent); }
+
+/* Barra lateral más sobria */
+[data-theme="carbon"] #sidebar { background: var(--panel); }
+[data-theme="carbon"] #folder.primary { background: var(--surface); color: var(--text); box-shadow: inset 0 0 0 1px var(--border); }
+[data-theme="carbon"] #folder.primary:hover { background: var(--border); color: var(--text); }
+
+/* Diffs: filas completas en verde y rojo, número de línea teñido */
+[data-theme="carbon"] .diff-table .diff-add { background: var(--diff-add); color: #d4f7dd; }
+[data-theme="carbon"] .diff-table .diff-remove { background: var(--diff-remove); color: #ffd6d8; }
+[data-theme="carbon"] .diff-table .diff-add td:nth-child(-n+2) { background: var(--diff-add); color: #9fdcb0; }
+[data-theme="carbon"] .diff-table .diff-remove td:nth-child(-n+2) { background: var(--diff-remove); color: #f0a5a8; }
+[data-theme="carbon"] .diff-block .diff-add { display: block; background: var(--diff-add); color: #d4f7dd; }
+[data-theme="carbon"] .diff-block .diff-remove { display: block; background: var(--diff-remove); color: #ffd6d8; }
+
+/* Sesiones: verde al terminar */
+[data-theme="carbon"] #open-sessions .os-sub[data-state="done"] { color: var(--carbon-done); }
+[data-theme="carbon"] #open-sessions .os-badge[data-kind="claude"] { background: #3a2317; }
+[data-theme="carbon"] #open-sessions .os-badge[data-kind="codex"] { background: #1b2a36; }
+
+
+/* Terminal más limpio: barra de división discreta y bordes finos */
+[data-theme="carbon"] .workspace-toolbar { background: transparent; border-bottom: 1px solid var(--border); }
+[data-theme="carbon"] .workspace-toolbar button, [data-theme="carbon"] .workspace-toolbar select { background: transparent; border-color: transparent; color: var(--muted); }
+[data-theme="carbon"] .workspace-toolbar button:hover { background: var(--surface); color: var(--text); }
+[data-theme="carbon"] .terminal-pane { padding: 8px 12px 4px; }
+
+/* Cuota como línea de estado fina bajo el terminal */
+[data-theme="carbon"] #quota-card { border-top: 1px solid var(--border); background: var(--bg); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; }
+[data-theme="carbon"] #quota-card .qc-head > span { display: none; }
